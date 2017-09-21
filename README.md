@@ -88,7 +88,16 @@ cat `find result | grep response.txt$`
 
 ### message when execute without input file
 
+I can not find any option no input file
+
+workflow does not execute.
+
 ```
 ./rabix  ~/workflows/workflows/hello/hello.cwl
+```
+
+message
+
+```
 Inputs for selected tool are:
 ```
