@@ -84,3 +84,11 @@ mkdir result
 ./rabix --no-container -b ./result ~/workflows/workflows/hello/hello.cwl examples/dna2protein/inputs.json
 cat `find result | grep response.txt$`
 ```
+
+
+### message when execute without input file
+
+```
+./rabix  ~/workflows/workflows/hello/hello.cwl
+Inputs for selected tool are:
+```
