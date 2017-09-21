@@ -74,3 +74,13 @@ expected result
 ```
 Hello World
 ```
+
+## specify result directory by rabix
+
+`-b` option
+
+```
+mkdir result
+./rabix --no-container -b ./result ~/workflows/workflows/hello/hello.cwl examples/dna2protein/inputs.json
+cat `find result | grep response.txt$`
+```
