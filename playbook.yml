@@ -1,0 +1,53 @@
+- hosts: all
+  become: yes
+  vars:
+    user: vagrant
+  tasks:
+    - name: Set timezone
+      timezone: name=Asia/Tokyo
+
+    - name: Add docker key
+      apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+
+    - name: Add docker repo
+      apt_repository: repo='deb [arch=amd64] http://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable' state=present
+
+    - name: Install packages
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - zsh
+        - screen
+        - tmux
+        - python-pip
+        - docker-ce
+        - tree
+
+    - name: Add docker group
+      user: name={{user}} append=yes groups=docker
+
+    - name: Install docker-compose
+      pip:
+        name: docker-compose
+
+    - name: Install cwlref-runner
+      pip:
+        name: cwlref-runner
+
+    - name: Install cwltool
+      pip:
+        name: cwltool
+
+    - name: Install cwl-runner
+      pip:
+        name: cwl-runner
+
+    - name: Start services
+      action: service name={{item}} state=started enabled=yes
+      with_items:
+        - docker
+
+    - name: git clone cwl workflows
+      git:
+        repo: https://github.com/common-workflow-language/workflows.git
+        dest: /home/{{user}}/workflows
+      become_user: "{{user}}"
