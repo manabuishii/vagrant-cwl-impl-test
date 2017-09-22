@@ -8,6 +8,12 @@ clone this repository
 vagrant up
 ```
 
+# Test Machine Environment by serverspec
+
+```
+rake spec
+```
+
 # Execute
 
 Login
