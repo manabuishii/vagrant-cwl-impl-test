@@ -60,6 +60,40 @@ expected result
 Hello World
 ```
 
+# Execute hello world sample by cwftoil
+
+```
+cd workflows/workflows/hello/
+cwltoil --defaultMemory 512M hello.cwl
+cat response.txt
+```
+
+expected result
+
+```
+Hello World
+```
+
+## Default Minimum Required Memory
+
+When I run 1GB memory virtual machine.
+
+cwltoil seems to need 2147483648 (int max?) bytes memory.
+This slightly greater than 2GB.
+
+There is following error, with `hello.cwl`
+
+```
+AssertionError: The job CWLWorkflow is requesting 2147483648 bytes of memory, more than the maximum of 1040605184 this batch system was configured with.
+```
+
+So minimum memory set to 512MB
+
+```
+cwltoil --defaultMemory 512M hello.cwl
+```
+
+
 # Execute hello world sample by rabix-1.0.1
 
 ```
