@@ -46,6 +46,11 @@
       pip:
         name: cwl-runner
 
+    - name: Install toil
+      pip:
+        name: toil
+
+
     - name: Start services
       action: service name={{item}} state=started enabled=yes
       with_items:
