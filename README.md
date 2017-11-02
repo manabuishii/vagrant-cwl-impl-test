@@ -7,7 +7,7 @@
 | cwotool       | 1.0.20170928192020 | [common-workflow-language/cwltool: Common Workflow Language reference implementation](https://github.com/common-workflow-language/cwltool)                                                                                                                |
 | cwlref-runner |                |                                                                                                                                                                                                                                                           |
 | cwl-runner    |                 |                                                                                                                                                                                                                                                           |
-| toil          | 3.11.0             | [BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python](https://github.com/BD2KGenomics/toil "BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python") |
+| toil (cwltoil)          | 3.11.0             | [BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python](https://github.com/BD2KGenomics/toil "BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python") |
 | rabix         | 1.0.1              | [rabix/bunny: Reproducible Analyses for Bioinformatics - Java](https://github.com/rabix/bunny)                                                                                                                                                            |
 
 ## cwl-runner
@@ -18,7 +18,7 @@ When I Install
 1. cwltool
 2. cwfref-runner
 3. cwl-runner
-4. toil
+4. toil (cwltoil)
 
 cwl-runner looks like overwriting by (cwl)toil version.
 
