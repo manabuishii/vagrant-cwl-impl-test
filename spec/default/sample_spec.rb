@@ -19,9 +19,17 @@ describe 'cwltool hello.cwl'  do
   end
 end
 
-describe 'cwl-runner hello.cwl'  do
-  describe file('/tmp/cwl-runner/response.txt') do
-    let(:pre_command) { 'rm -rf /tmp/cwl-runner ; mkdir /tmp/cwl-runner ;cd /tmp/cwl-runner ; cwl-runner /home/vagrant/workflows/workflows/hello/hello.cwl' }
+#describe 'cwl-runner hello.cwl'  do
+#  describe file('/tmp/cwl-runner/response.txt') do
+#    let(:pre_command) { 'rm -rf /tmp/cwl-runner ; mkdir /tmp/cwl-runner ;cd /tmp/cwl-runner ; cwl-runner /home/vagrant/workflows/workflows/hello/hello.cwl' }
+#    its(:content) { should match /Hello World/ }
+#  end
+#end
+
+
+describe 'cwltoil hello.cwl'  do
+  describe file('/tmp/cwltoil/response.txt') do
+    let(:pre_command) { 'rm -rf /tmp/cwltoil/response.txt ; mkdir /tmp/cwltoil ;cd /tmp/cwltoil ; cwltoil --defaultMemory 512M /home/vagrant/workflows/workflows/hello/hello.cwl' }
     its(:content) { should match /Hello World/ }
   end
 end
