@@ -6,6 +6,15 @@
     rabix_tarball_dest: /home/{{user}}/rabix-1.0.1.tar.gz
     rabix_tarball_sha256sum: 3a0fe7a849dfbcdd005a0440e921f62294225fd20c1539af12097c31f5868602
     rabix_dir: /home/{{user}}
+    dein_vim_dest: ~/Sources/Provision/Github/DeinVim
+    vim_plugins:
+      # - Shougo/neosnippet.vim
+      # - Shougo/neosnippet-snippets
+      # - { name: Shougo/vimshell, revision: 3787e5 }
+      # - scrooloose/nerdtree
+      - manabuishii/vim-cwl
+      - fatih/vim-go
+
   tasks:
     - name: Set timezone
       timezone: name=Asia/Tokyo
@@ -26,6 +35,7 @@
         - docker-ce
         - tree
         - openjdk-8-jre
+        - tig
 
     - name: Add docker group
       user: name={{user}} append=yes groups=docker
@@ -69,4 +79,27 @@
 
     - name: untar rabix tarball
       command: tar -xvf {{rabix_tarball_dest}} -C {{rabix_dir}}
+      become_user: "{{user}}"
+
+    - name: Add golang repository for yacle
+      apt_repository:
+        repo: 'ppa:longsleep/golang-backports'
+
+    - name: Install golang
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - golang-go
+
+    # install vim dein.vim
+    - name: dein.vim file directory
+      file: path={{ dein_vim_dest }} state=directory
+      become_user: "{{user}}"
+
+    - name: clone dein.vim repo
+      git: repo=https://github.com/Shougo/dein.vim.git dest={{ dein_vim_dest }}
+      become_user: "{{user}}"
+
+    - name: generate .vimrc with plugins
+      template: src=.vimrc.j2 dest=~/.vimrc
+      when: vim_plugins
       become_user: "{{user}}"
