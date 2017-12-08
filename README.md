@@ -9,6 +9,7 @@
 | cwl-runner    |                 |                                                                                                                                                                                                                                                           |
 | toil (cwltoil)          | 3.11.0             | [BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python](https://github.com/BD2KGenomics/toil "BD2KGenomics/toil: A scalable, efficient, cross-platform and easy-to-use workflow engine in pure Python") |
 | rabix         | 1.0.1              | [rabix/bunny: Reproducible Analyses for Bioinformatics - Java](https://github.com/rabix/bunny)                                                                                                                                                            |
+| schema_salad  |                 |                                                                                                                                                                                                                                                           |
 
 ## cwl-runner
 
